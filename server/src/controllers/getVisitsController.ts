@@ -10,7 +10,7 @@ exports.getVisits = async (req: Request, res: Response, next: NextFunction) => {
     const { rows: breeds } = await pool.query("SELECT * FROM breeds ORDER BY visits DESC LIMIT 10");
 
     const getCat = async (breed: string): Promise<Cat> => {
-      const { data } = await axios.get(process.env.API_URL_SELECT, {
+      const { data } = await axios.get("https://api.thecatapi.com/v1/images/search?", {
         headers: { "x-api-key": process.env.API_KEY },
         params: {
           breed_id: breed,
@@ -30,7 +30,7 @@ exports.getVisits = async (req: Request, res: Response, next: NextFunction) => {
 
     res.status(200).json({ status: "Successfully retrieved visits", data: dataOfInterest });
   } catch (err) {
-    res.status(200).json({ status: err, errmsg: err.msg});
+    res.status(200).json({ status: err, errmsg: err.msg });
   }
 };
 

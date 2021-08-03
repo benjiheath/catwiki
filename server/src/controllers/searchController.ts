@@ -3,7 +3,7 @@ const axios = require("axios");
 
 exports.filterBreeds = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { data } = await axios.get(process.env.API_URL_BREED, {
+    const { data } = await axios.get("https://api.thecatapi.com/v1/breeds/search?", {
       headers: { "x-api-key": process.env.API_KEY },
       params: {
         q: req.params.query,

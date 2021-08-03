@@ -4,7 +4,7 @@ const { formatForSelect } = require("./formatHandlers/formatForSelect");
 
 exports.selectBreed = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { data } = await axios.get(process.env.API_URL_SELECT, {
+    const { data } = await axios.get("https://api.thecatapi.com/v1/images/search?", {
       headers: { "x-api-key": process.env.API_KEY },
       params: {
         breed_id: req.params.select,
