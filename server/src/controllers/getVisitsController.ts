@@ -11,7 +11,7 @@ exports.getVisits = async (req: Request, res: Response, next: NextFunction) => {
 
     const getCat = async (breed: string): Promise<Cat> => {
       const { data } = await axios.get("https://api.thecatapi.com/v1/images/search?", {
-        headers: { "x-api-key": process.env.API_KEY },
+        headers: { "x-api-key": "11fddd33-7c21-48ce-9e69-2cf63698a5f2" },
         params: {
           breed_id: breed,
           limit: 1,

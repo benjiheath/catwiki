@@ -7,6 +7,8 @@ const app = express();
 
 app.use(cors());
 
+console.log(process.env.API_KEY);
+
 //* Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
