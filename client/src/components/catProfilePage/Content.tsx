@@ -13,7 +13,7 @@ const Content = () => {
   const updateDbVisits = async () => {
     const {
       data: { status },
-    } = await axios.post(`http://127.0.0.1:5000/visits/${id}`);
+    } = await axios.post(`https://catwiki-api-bjd.herokuapp.com/visits/${id}`);
     console.log(status);
   };
 
