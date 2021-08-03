@@ -1,13 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 const axios = require("axios");
 
-console.log(process.env.API_KEY);
-
 exports.filterBreeds = async (req: Request, res: Response, next: NextFunction) => {
-  console.log(process.env.API_KEY);
   try {
-    const { data } = await axios.get("https://api.thecatapi.com/v1/breeds/search?", {
-      headers: { "x-api-key": "11fddd33-7c21-48ce-9e69-2cf63698a5f2" },
+    const { data } = await axios.get(process.env.API_URL_BREED, {
+      headers: { "x-api-key": process.env.API_KEY },
       params: {
         q: req.params.query,
       },
