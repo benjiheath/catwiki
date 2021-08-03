@@ -31,7 +31,7 @@ const CatProfileProvider = (props: any) => {
     try {
       setLoading(true);
 
-      const { data } = await axios.get(`https://bo2-test.herokuapp.com/select/${id}`);
+      const { data } = await axios.get(`https://catwiki-api-bjd.herokuapp.com/${id}`);
 
       console.log(data);
 

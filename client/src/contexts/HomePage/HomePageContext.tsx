@@ -72,7 +72,7 @@ const HomePageProvider = (props: any) => {
     timeout.current = setTimeout(async () => {
       try {
         const res = await axios.get(
-          `https://bo2-test.herokuapp.com/query/${inputRef.current.value.trim()}`
+          `https://catwiki-api-bjd.herokuapp.com/query/${inputRef.current.value.trim()}`
         );
         if (res.data.status === "no results") {
           noResultsHandler();
@@ -93,7 +93,7 @@ const HomePageProvider = (props: any) => {
     try {
       const {
         data: { data },
-      } = await axios.get(`https://bo2-test.herokuapp.com/visits`);
+      } = await axios.get(`https://catwiki-api-bjd.herokuapp.com/visits`);
       console.log("TOPS:", data);
       setTopVisits(data);
       setLoading(false);
