@@ -1,5 +1,5 @@
-import pick from "lodash/pick";
-import { ParsedCat, Cat } from "../../types";
+import pick from 'lodash/pick';
+import { ParsedCat, Cat } from '../../types';
 
 exports.formatForSelect = (data: Cat[], visits: number): ParsedCat => {
   const breedInfo = data[0].breeds[0];
@@ -11,30 +11,29 @@ exports.formatForSelect = (data: Cat[], visits: number): ParsedCat => {
   // Isolate relevant data
   const overview = pick(
     breedInfo,
-    "name",
-    "id",
-    "description",
-    "temperament",
-    "origin",
-    "life_span"
+    'name',
+    'id',
+    'description',
+    'temperament',
+    'origin',
+    'life_span'
   );
   const img = data[0].url;
-  const attributesRaw = pick(
+  const attributesRaw: any = pick(
     breedInfo,
-    "adaptability",
-    "affection_level",
-    "child_friendly",
-    "grooming",
-    "intelligence",
-    "health_issues",
-    "social_needs",
-    "stranger_friendly"
+    'adaptability',
+    'affection_level',
+    'child_friendly',
+    'grooming',
+    'intelligence',
+    'health_issues',
+    'social_needs',
+    'stranger_friendly'
   );
 
   // make attributes iterable for front-end
-  const attributes = Object.keys(attributesRaw).map((key) => {
-    const formattedKey = key.replace("_", " ");
-    // @ts-ignore
+  const attributes = Object.keys(attributesRaw).map(key => {
+    const formattedKey = key.replace('_', ' ');
     return { [formattedKey]: attributesRaw[key] };
   });
 

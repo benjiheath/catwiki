@@ -1,10 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
-
-export interface ExpressAsync {
-  req: Request;
-  res: Response;
-  next: NextFunction;
+export interface LooseObject {
+  [key: string]: any;
 }
+
+export type Timeout = { current: NodeJS.Timeout | null };
 
 export interface Breed {
   id: number;
@@ -37,13 +35,6 @@ export interface Attributes {
   [key: string]: number;
 }
 
-export type ParsedCat = Pick<
-  Breed,
-  'name' | 'id' | 'description' | 'temperament' | 'origin' | 'life_span'
-> & {
-  attributes: Attributes[];
-} & { img: string; images: string[]; visits: number };
-
 // export type ParsedCat = Pick<
 //   Breed,
 //   "name" | "id" | "description" | "temperament" | "origin" | "life_span"
@@ -60,3 +51,10 @@ export type ParsedCat = Pick<
 //     | "stranger_friendly"
 //   >[];
 // } & { img: string; images: string; visits: number };
+
+export type ParsedCat = Pick<
+  Breed,
+  'name' | 'id' | 'description' | 'temperament' | 'origin' | 'life_span'
+> & {
+  attributes: Attributes[];
+} & { img: string; images: string[]; visits: number };

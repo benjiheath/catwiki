@@ -1,114 +1,41 @@
-import axios from "axios";
-import { createContext, useReducer, useContext, useRef, useEffect } from "react";
-import { initState, homePageReducer } from "./reducer";
+import React, { createContext, useContext, useRef, useEffect, useCallback } from 'react';
+import useHomePageReducer from './useHomePageReducer';
+import { Timeout } from '../../types';
+import { searchCatsOnInputChange, getTopVisitsFromAPI } from './handlers';
 
-export const HomePageContext = createContext(null);
+export const HomePageContext = createContext<Object | null>(null);
 
-const HomePageProvider = (props: any) => {
-  const [state, dispatch] = useReducer(homePageReducer, initState);
+interface ProviderProps {
+  children: React.ReactNode;
+}
 
-  const dispatchers = {
-    setCats: (value: any) => {
-      dispatch({ type: "SET_CATS", payload: value });
-    },
-    setLoading: (value: any) => {
-      dispatch({ type: "SET_LOADING", payload: value });
-    },
-    setSearchLoading: (value: any) => {
-      dispatch({ type: "SET_SEARCH_LOADING", payload: value });
-    },
-    setShowModal: (value: any) => {
-      dispatch({ type: "SET_MODAL", payload: value });
-    },
-    setNoResults: (value: any) => {
-      dispatch({ type: "SET_NO_RESULTS", payload: value });
-    },
-    setTopVisits: (value: any) => {
-      dispatch({ type: "SET_TOP_VISITS", payload: value });
-    },
-    initSearch: () => {
-      dispatch({ type: "INIT_SEARCH" });
-    },
-    inputIsEmpty: () => {
-      dispatch({ type: "INPUT_EMPTY" });
-    },
-    noResultsHandler: () => {
-      dispatch({ type: "NO_RESULTS" });
-    },
-    successfulSearch: (value: any) => {
-      dispatch({ type: "SUCCESS", payload: value });
-      console.log(value);
-    },
-  };
+const HomePageProvider = (props: ProviderProps) => {
+  const [state, dispatchers] = useHomePageReducer();
 
-  const {
-    setLoading,
-    setSearchLoading,
-    setCats,
-    setShowModal,
-    setNoResults,
-    setTopVisits,
-    initSearch,
-    inputIsEmpty,
-    noResultsHandler,
-    successfulSearch,
-  } = dispatchers;
+  // State for debouncing; used in search handler
+  const inputRef = useRef<HTMLInputElement>(null!);
+  const timeout: Timeout = useRef(null!);
 
-  // State for throttling/debouncing
-  const inputRef = useRef<any>(null);
-  const timeout = useRef<any>();
-  const throttling = useRef(false);
-
-  // FETCH with debouncing
-  const searchCatsOnInputChange = () => {
-    initSearch();
-    clearTimeout(timeout.current);
-
-    if (!inputRef.current.value.trim()) {
-      inputIsEmpty(); // if input empty, remove suggestions & avoid making request
-      return null;
-    }
-
-    timeout.current = setTimeout(async () => {
-      try {
-        const res = await axios.get(
-          `https://catwiki-api-bjd.herokuapp.com/query/${inputRef.current.value.trim()}`
-        );
-        if (res.data.status === "no results") {
-          noResultsHandler();
-          return;
-        }
-        const data = res.data.data;
-        successfulSearch(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }, 500);
-  };
+  // passing this handler down to Search component
+  const handleSearch = useCallback(() => {
+    searchCatsOnInputChange(dispatchers, timeout, inputRef);
+  }, [dispatchers]);
 
   // GET breed visits on page load
-  const getTopVisitsFromAPI = async () => {
-    setLoading(true);
-
-    try {
-      const {
-        data: { data },
-      } = await axios.get(`https://catwiki-api-bjd.herokuapp.com/visits`);
-      console.log("TOPS:", data);
-      setTopVisits(data);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    getTopVisitsFromAPI();
+    getTopVisitsFromAPI(dispatchers);
   }, []);
 
   return (
     <HomePageContext.Provider
-      value={{ ...state, ...dispatchers, searchCatsOnInputChange, getTopVisitsFromAPI, inputRef }}
+      value={{
+        ...state,
+        ...dispatchers,
+        searchCatsOnInputChange,
+        getTopVisitsFromAPI,
+        inputRef,
+        handleSearch,
+      }}
     >
       {props.children}
     </HomePageContext.Provider>
@@ -150,6 +77,9 @@ export default HomePageProvider; /*
 
 
  //! THROTTLING
+
+  // const throttling = useRef(false);
+
 
   // const onChangeHandler = () => {
   //   if (throttling.current) return;

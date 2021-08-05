@@ -1,26 +1,33 @@
-import styled from "styled-components";
-import { useHomePageContext } from "../../contexts/HomePage/HomePageContext";
-import { Spinner } from "../reusable";
-import ResultBlock from "./ResultBlock";
-import { GiCat } from "react-icons/gi";
-import { FaSadTear } from "react-icons/fa";
-import { AiOutlineSearch } from "react-icons/ai";
+import styled from 'styled-components';
+import { useHomePageContext } from '../../contexts/HomePage/HomePageContext';
+import { Spinner } from '../reusable';
+import ResultBlock from './ResultBlock';
+import { GiCat } from 'react-icons/gi';
+import { FaSadTear } from 'react-icons/fa';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const Search = () => {
-  const { searchLoading, cats, showModal, noResults, inputRef, searchCatsOnInputChange } =
-    useHomePageContext();
+  const {
+    searchLoading,
+    cats,
+    showModal,
+    noResults,
+    inputRef,
+    searchCatsOnInputChange,
+    handleSearch,
+  } = useHomePageContext();
 
   return (
     <SearchContainer>
       <SearchBar
         ref={inputRef}
-        type="text"
-        placeholder="Enter your breed"
-        onChange={searchCatsOnInputChange}
+        type='text'
+        placeholder='Enter your breed'
+        onChange={handleSearch}
       />
       <AiOutlineSearch />
 
-      {searchLoading && <Spinner type="modal" />}
+      {searchLoading && <Spinner type='modal' />}
       {showModal && (
         <ResultsModal>
           <ResultsContainer>
