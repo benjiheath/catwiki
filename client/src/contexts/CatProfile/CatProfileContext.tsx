@@ -1,49 +1,23 @@
-import axios from "axios";
-import { createContext, useReducer, useContext } from "react";
-import { catProfileReducer } from "./reducer";
+import { createContext, useCallback, useContext } from 'react';
+import useCatProfileReducer from './useCatProfileReducer';
+import { getBreedData } from './handlers/getBreedData';
+import { ProviderProps } from '../../types';
 
-export const CatProfileContext = createContext(null);
+export const CatProfileContext = createContext<Object | null>(null);
 
-const initState = {
-  data: null,
-  loading: false,
-};
+const CatProfileProvider = (props: ProviderProps) => {
+  const [state, dispatchers] = useCatProfileReducer();
 
-const CatProfileProvider = (props: any) => {
-  const [state, dispatch] = useReducer(catProfileReducer, initState);
-
-  const dispatchers = {
-    setData: (value: any) => {
-      dispatch({
-        type: "SET_CAT_DATA",
-        payload: value,
-      });
+  // Pass to Content component to get breed info on page load
+  const getBreedDataHandler = useCallback(
+    (id: number) => {
+      getBreedData(id, dispatchers);
     },
-    setLoading: (value: any) => {
-      dispatch({ type: "SET_LOADING", payload: value });
-    },
-  };
-
-  // Fetch
-  const { setLoading, setData } = dispatchers;
-
-  const getBreedData = async (id: number) => {
-    try {
-      setLoading(true);
-
-      const { data } = await axios.get(`https://catwiki-api-bjd.herokuapp.com/select/${id}`);
-
-      console.log(data);
-
-      setData(data);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    [dispatchers]
+  );
 
   return (
-    <CatProfileContext.Provider value={{ ...state, ...dispatchers, getBreedData }}>
+    <CatProfileContext.Provider value={{ ...state, getBreedDataHandler }}>
       {props.children}
     </CatProfileContext.Provider>
   );

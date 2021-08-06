@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useCatProfileContext } from "../../contexts/CatProfile/CatProfileContext";
-import Attribute, { Key } from "./Attribute";
+import styled from 'styled-components';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useCatProfileContext } from '../../contexts/CatProfile/CatProfileContext';
+import Attribute, { Key } from './Attribute';
 
 const Content = () => {
-  const { loading, data, getBreedData } = useCatProfileContext();
+  const { loading, data, getBreedDataHandler } = useCatProfileContext();
 
   const { id } = useParams<any>();
 
@@ -18,7 +18,7 @@ const Content = () => {
   };
 
   useEffect(() => {
-    getBreedData(id);
+    getBreedDataHandler(id);
     updateDbVisits();
   }, []);
 

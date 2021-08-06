@@ -1,13 +1,10 @@
-import React, { createContext, useContext, useRef, useEffect, useCallback } from 'react';
+import { createContext, useContext, useRef, useEffect, useCallback } from 'react';
 import useHomePageReducer from './useHomePageReducer';
 import { Timeout } from '../../types';
 import { searchCatsOnInputChange, getTopVisitsFromAPI } from './handlers';
+import { ProviderProps } from '../../types';
 
 export const HomePageContext = createContext<Object | null>(null);
-
-interface ProviderProps {
-  children: React.ReactNode;
-}
 
 const HomePageProvider = (props: ProviderProps) => {
   const [state, dispatchers] = useHomePageReducer();
@@ -21,7 +18,7 @@ const HomePageProvider = (props: ProviderProps) => {
     searchCatsOnInputChange(dispatchers, timeout, inputRef);
   }, [dispatchers]);
 
-  // GET breed visits on page load
+  // get breed visits on page load
   useEffect(() => {
     getTopVisitsFromAPI(dispatchers);
   }, []);

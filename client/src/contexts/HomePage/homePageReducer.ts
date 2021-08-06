@@ -7,15 +7,6 @@ interface InitState {
   topVisits: any;
 }
 
-export const initState: InitState = {
-  cats: [{ name: '', id: '' }],
-  loading: false,
-  searchLoading: false,
-  showModal: false,
-  noResults: false,
-  topVisits: null,
-};
-
 type ACTIONTYPE =
   | { type: 'SET_CAT_DATA'; payload: object[] }
   | {
@@ -28,6 +19,15 @@ type ACTIONTYPE =
       payload?: undefined;
     }
   | { type: 'SUCCESS'; payload: any };
+
+export const initState: InitState = {
+  cats: [{ name: '', id: '' }],
+  loading: false,
+  searchLoading: false,
+  showModal: false,
+  noResults: false,
+  topVisits: null,
+};
 
 export const homePageReducer = (state: InitState, action: ACTIONTYPE) => {
   switch (action.type) {

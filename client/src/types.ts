@@ -4,6 +4,10 @@ export interface LooseObject {
 
 export type Timeout = { current: NodeJS.Timeout | null };
 
+export interface ProviderProps {
+  children: React.ReactNode;
+}
+
 export interface Breed {
   id: number;
   breed: string;
