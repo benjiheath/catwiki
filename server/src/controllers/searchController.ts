@@ -1,9 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
-const axios = require('axios');
+import axios from 'axios';
 
-exports.filterBreeds = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const filterBreeds = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
-    const { data } = await axios.get(process.env.API_URL_BREED, {
+    const { data } = await axios.get(process.env.API_URL_BREED as string, {
       headers: { 'x-api-key': process.env.API_KEY },
       params: {
         q: req.params.query,

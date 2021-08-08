@@ -7,15 +7,8 @@ import { FaSadTear } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const Search = () => {
-  const {
-    searchLoading,
-    cats,
-    showModal,
-    noResults,
-    inputRef,
-    searchCatsOnInputChange,
-    handleSearch,
-  } = useHomePageContext();
+  const { searchLoading, cats, showModal, noResults, inputRef, handleSearch } =
+    useHomePageContext();
 
   return (
     <SearchContainer>

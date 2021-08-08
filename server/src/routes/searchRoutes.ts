@@ -1,7 +1,7 @@
 import express from 'express';
+import { filterBreeds } from '../controllers/searchController';
 const router = express.Router();
-const { filterBreeds } = require('../controllers/searchController');
 
 router.get('/:query', filterBreeds);
 
-module.exports = router;
+export { router as filterRouter };

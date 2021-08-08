@@ -1,17 +1,14 @@
-const Pool = require("pg").Pool;
+const Pool = require('pg').Pool;
 
-const pool = new Pool({
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE,
-    ssl: {
-        rejectUnauthorized: false,
-    },
+const e = process.env;
+
+export const pool = new Pool({
+  user: e.NODE_ENV === 'dev' ? e.DEV_USER : e.DB_USER,
+  password: e.NODE_ENV === 'dev' ? e.DEV_PASSWORD : e.DB_PASSWORD,
+  host: e.NODE_ENV === 'dev' ? e.DEV_HOST : e.DB_HOST,
+  port: e.NODE_ENV === 'dev' ? e.DEV_PORT : e.DB_PORT,
+  database: e.NODE_ENV === 'dev' ? e.DEV_DB : e.DB_DATABASE,
+  ssl: e.NODE_ENV !== 'dev' && {
+    rejectUnauthorized: false,
+  },
 });
-
-module.exports = pool;
-
-// psql --host=ec2-44-194-145-230.compute-1.amazonaws.com --port=5432 --username=nzvocrymtrnnlt --password --dbname=d76h217n6aji8k
-

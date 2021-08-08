@@ -15,11 +15,14 @@ export const searchCatsOnInputChange = (
     return null;
   }
 
+  const url =
+    process.env.REACT_APP_ENV === 'dev'
+      ? 'http://localhost:3001'
+      : 'https://catwiki-api-bjd.herokuapp.com';
+
   timeout.current = setTimeout(async () => {
     try {
-      const res = await axios.get(
-        `https://catwiki-api-bjd.herokuapp.com/query/${inputRef.current.value.trim()}`
-      );
+      const res = await axios.get(`${url}/query/${inputRef.current.value.trim()}`);
       if (res.data.status === 'no results') {
         noResultsHandler();
         return;

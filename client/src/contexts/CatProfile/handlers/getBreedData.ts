@@ -5,9 +5,12 @@ export const getBreedData = async (id: number, { setData, setLoading }: LooseObj
   try {
     setLoading(true);
 
-    const { data } = await axios.get(`https://catwiki-api-bjd.herokuapp.com/select/${id}`);
+    const url =
+      process.env.REACT_APP_ENV === 'dev'
+        ? 'http://localhost:3001'
+        : 'https://catwiki-api-bjd.herokuapp.com';
 
-    console.log(data);
+    const { data } = await axios.get(`${url}/select/${id}`);
 
     setData(data);
     setLoading(false);

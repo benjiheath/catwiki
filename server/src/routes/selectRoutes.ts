@@ -1,7 +1,7 @@
-import express from "express";
+import express from 'express';
+import { selectBreed } from '../controllers/selectController';
 const router = express.Router();
-const { selectBreed } = require("../controllers/selectController");
 
-router.get("/:select", selectBreed);
+router.get('/:select', selectBreed);
 
-module.exports = router;
+export { router as selectRouter };

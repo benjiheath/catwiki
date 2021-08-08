@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-const pool = require('../db');
+import { pool } from '../db';
 
-exports.updateVisits = async (req: Request, res: Response, next: NextFunction) => {
+export const updateVisits = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id = req.params.breed;
 

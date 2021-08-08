@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response } from "express";
-const axios = require("axios");
-const { formatForSelect } = require("./formatHandlers/formatForSelect");
+import { NextFunction, Request, Response } from 'express';
+import axios from 'axios';
+import { formatCatDataForClient } from './formatHandlers/formatCatDataForClient';
 
-exports.selectBreed = async (req: Request, res: Response, next: NextFunction) => {
+export const selectBreed = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { data } = await axios.get(process.env.API_URL_SELECT, {
-      headers: { "x-api-key": process.env.API_KEY },
+    const { data } = await axios.get(process.env.API_URL_SELECT as string, {
+      headers: { 'x-api-key': process.env.API_KEY },
       params: {
         breed_id: req.params.select,
         limit: 9,
@@ -13,7 +13,7 @@ exports.selectBreed = async (req: Request, res: Response, next: NextFunction) =>
     });
 
     // format necessary data for iteration;
-    const dataOfInterest = formatForSelect(data);
+    const dataOfInterest = formatCatDataForClient(data);
 
     res.status(200).json({ ...dataOfInterest });
   } catch (err) {

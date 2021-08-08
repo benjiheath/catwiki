@@ -11,7 +11,7 @@ export interface ProviderProps {
 export interface Breed {
   id: number;
   breed: string;
-  visits: number;
+  visits?: number | undefined;
   name: string;
   description: string;
   temperament: string;
@@ -39,26 +39,9 @@ export interface Attributes {
   [key: string]: number;
 }
 
-// export type ParsedCat = Pick<
-//   Breed,
-//   "name" | "id" | "description" | "temperament" | "origin" | "life_span"
-// > & {
-//   attributes: Pick<
-//     Breed,
-//     | "adaptability"
-//     | "affection_level"
-//     | "child_friendly"
-//     | "grooming"
-//     | "intelligence"
-//     | "health_issues"
-//     | "social_needs"
-//     | "stranger_friendly"
-//   >[];
-// } & { img: string; images: string; visits: number };
-
 export type ParsedCat = Pick<
   Breed,
   'name' | 'id' | 'description' | 'temperament' | 'origin' | 'life_span'
 > & {
   attributes: Attributes[];
-} & { img: string; images: string[]; visits: number };
+} & { img: string; images: string[]; visits?: number | undefined };

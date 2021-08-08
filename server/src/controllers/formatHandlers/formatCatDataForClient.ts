@@ -1,11 +1,15 @@
 import pick from 'lodash/pick';
 import { ParsedCat, Cat } from '../../types';
 
-exports.formatForSelect = (data: Cat[], visits: number): ParsedCat => {
+export const formatCatDataForClient = (data: Cat[], visits?: number): ParsedCat => {
   const breedInfo = data[0].breeds[0];
 
+  interface Img {
+    url: string;
+  }
+
   // isolate images
-  const images = data.map((img: any) => img.url);
+  const images = data.map((img: Img) => img.url);
   images.shift();
 
   // Isolate relevant data
@@ -32,14 +36,12 @@ exports.formatForSelect = (data: Cat[], visits: number): ParsedCat => {
   );
 
   // make attributes iterable for front-end
-  const attributes = Object.keys(attributesRaw).map(key => {
+  const attributes = Object.keys(attributesRaw).map((key) => {
     const formattedKey = key.replace('_', ' ');
     return { [formattedKey]: attributesRaw[key] };
   });
 
-  const dataOfInterest = { ...overview, attributes, img, images, visits: visits && visits };
-
-  console.log(dataOfInterest);
+  const dataOfInterest = { ...overview, attributes, img, images, visits };
 
   return dataOfInterest;
 };
@@ -54,10 +56,29 @@ exports.formatForSelect = (data: Cat[], visits: number): ParsedCat => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 */
 
 // V2
-// export const formatForSelect = (data: Cat[], visits: number): ParsedCat => {
+// export const formatCatDataForClient = (data: Cat[], visits: number): ParsedCat => {
 //   const breedInfo = data[0].breeds[0];
 
 //   // isolate images

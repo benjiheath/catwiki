@@ -1,9 +1,9 @@
-import express from "express";
+import express from 'express';
+import { updateVisits } from '../controllers/updateVisitsController';
+import { getVisits } from '../controllers/getVisitsController';
 const router = express.Router();
-const { updateVisits } = require("../controllers/updateVisitsController");
-const { getVisits } = require("../controllers/getVisitsController");
 
-router.post("/:breed", updateVisits);
-router.get("/", getVisits);
+router.post('/:breed', updateVisits);
+router.get('/', getVisits);
 
-module.exports = router;
+export { router as visitsRouter };

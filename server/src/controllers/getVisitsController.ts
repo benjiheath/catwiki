@@ -1,16 +1,15 @@
-import { NextFunction, Request, Response } from 'express';
-const axios = require('axios');
-const pool = require('../db');
-const { formatForSelect } = require('./formatHandlers/formatForSelect');
+import axios from 'axios';
+import { pool } from '../db';
+import { formatCatDataForClient } from './formatHandlers/formatCatDataForClient';
 import { ParsedCat, Cat, ExpressAsync } from '../types';
 
-exports.getVisits = async ({ req, res, next }: ExpressAsync) => {
+export const getVisits = async ({ req, res, next }: ExpressAsync) => {
   try {
     // get breeds (rows) from db sorted by visits
     const { rows: breeds } = await pool.query('SELECT * FROM breeds ORDER BY visits DESC LIMIT 10');
 
-    const getCat = async (breed: string): Promise<Cat> => {
-      const { data } = await axios.get(process.env.API_URL_SELECT, {
+    const getCat = async (breed: string): Promise<Cat[]> => {
+      const { data } = await axios.get(process.env.API_URL_SELECT as string, {
         headers: { 'x-api-key': process.env.API_KEY },
         params: {
           breed_id: breed,
@@ -24,9 +23,9 @@ exports.getVisits = async ({ req, res, next }: ExpressAsync) => {
     const dataOfInterest = (await Promise.all(
       breeds.map(async (breed: any) => {
         const cat = await getCat(breed.breed);
-        return formatForSelect(cat, breed.visits);
+        return formatCatDataForClient(cat, breed.visits);
       })
-    )) as unknown as ParsedCat[];
+    )) as ParsedCat[];
 
     res.status(200).json({ status: 'Successfully retrieved visits', data: dataOfInterest });
   } catch (err) {
@@ -65,7 +64,7 @@ exports.getVisits = async ({ req, res, next }: ExpressAsync) => {
 
 //     console.log("data:", data);
 //     // format necessary data for iteration; also inject # of visits
-//     const formattedData = formatForSelect(data, br.visits);
+//     const formattedData = formatCatDataForClient(data, br.visits);
 
 //     return formattedData;
 //   })

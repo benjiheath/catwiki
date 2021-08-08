@@ -11,9 +11,14 @@ const Content = () => {
   const { id } = useParams<any>();
 
   const updateDbVisits = async () => {
+    const url =
+      process.env.REACT_APP_ENV === 'dev'
+        ? 'http://localhost:3001'
+        : 'https://catwiki-api-bjd.herokuapp.com';
+
     const {
       data: { status },
-    } = await axios.post(`https://catwiki-api-bjd.herokuapp.com/visits/${id}`);
+    } = await axios.post(`${url}/visits/${id}`);
     console.log(status);
   };
 
