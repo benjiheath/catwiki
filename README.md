@@ -51,7 +51,7 @@ Here I gain a strong introduction to Typescript and the world of back-end develo
 
 ## Screenshots
 
-![screenshot](https://media3.giphy.com/media/QYiZWOYJAjF0RzsEhs/giphy.gif?cid=790b7611ab4476f79f3b10dc1ca1bda00828a3f49471a27a&rid=giphy.gif)
+![screenshot](https://i.giphy.com/media/QYiZWOYJAjF0RzsEhs/giphy.webp)
 <br>
 <br><br><br>
 
