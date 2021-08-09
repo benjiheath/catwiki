@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { SectionContainer } from "../styledComponents";
-import { Button } from "../reusable";
-import { img1, img2, img3 } from "../../img";
+import styled from 'styled-components';
+import { SectionContainer } from '../styledComponents';
+import { Button } from '../reusable';
+import { img1, img2, img3 } from '../../img';
 
 const Info = () => {
   return (
@@ -12,7 +12,13 @@ const Info = () => {
           Having a cat around you can actually trigger the release of calming chemicals in your body
           which lower your stress and anxiety levels
         </Text>
-        <Button text="read more" />
+        <a
+          href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3317329/'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <Button text='read more' />
+        </a>
       </TextContainer>
       <ImgContainer>
         <Img src={img2} />
@@ -64,7 +70,7 @@ const Heading = styled.h3`
   margin-bottom: 5rem;
 
   &::before {
-    content: "";
+    content: '';
     display: block;
     background-color: var(--line-brown);
     border-radius: 200px;

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import CatImgHoverVisits from "../reusable/CatImgHoverVisits";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import CatImgHoverVisits from '../reusable/CatImgHoverVisits';
 
 interface Props {
   breed: any;
@@ -11,13 +11,13 @@ const TopBreed = ({ breed, idx }: Props) => {
   return (
     <Link to={`/breeds/${breed.id}`}>
       <BreedWrapper>
-        <CatImgHoverVisits visits={breed.visits} hw="22rem" img={breed.img} />
+        <CatImgHoverVisits visits={breed.visits} hw='22rem' img={breed.img} />
         <TextWrapper>
           <BreedName>
             {idx + 1}.&nbsp;{breed.name}
           </BreedName>
           <NumVisits>
-            <strong>{breed.visits}</strong> {breed.visits > 1 ? "visits" : "visit"}
+            <strong>{breed.visits}</strong> {breed.visits > 1 ? 'visits' : 'visit'}
           </NumVisits>
           <Description>{breed.description}</Description>
         </TextWrapper>
@@ -49,7 +49,7 @@ const BreedWrapper = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: #a0743313;
+    background-color: #36240713;
 
     & img {
       transform: scale(1);

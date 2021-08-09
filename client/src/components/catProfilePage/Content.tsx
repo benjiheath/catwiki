@@ -124,6 +124,11 @@ const Description = styled.p`
   @media (max-width: 750px) {
     text-align: justify;
   }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+    margin-bottom: 6rem;
+  }
 `;
 
 const Detail = styled.div`
