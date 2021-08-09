@@ -4,22 +4,32 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useCatProfileContext } from '../../contexts/CatProfile/CatProfileContext';
 import Attribute, { Key } from './Attribute';
+import { useHistory } from 'react-router';
 
 const Content = () => {
   const { loading, data, getBreedDataHandler } = useCatProfileContext();
 
+  const history = useHistory();
+
   const { id } = useParams<{ id: string }>();
 
   const updateDbVisits = async () => {
-    const url =
-      process.env.REACT_APP_ENV === 'dev'
-        ? 'http://localhost:3001'
-        : 'https://catwiki-api-bjd.herokuapp.com';
+    try {
+      const url =
+        process.env.REACT_APP_ENV === 'dev'
+          ? 'http://localhost:3001'
+          : 'https://catwiki-api-bjd.herokuapp.com';
 
-    const {
-      data: { status },
-    } = await axios.post(`${url}/visits/${id}`);
-    console.log(status);
+      const {
+        data: { status },
+      } = await axios.post(`${url}/visits/${id}`);
+
+      if (status.name === 'error') {
+        history.push({ pathname: '/404' });
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
