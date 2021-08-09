@@ -15,17 +15,17 @@ function App() {
           <Link to='/'>
             <Logo src={logo} />
           </Link>
-          <Switch>
-            <HomePageProvider>
-              <CatProfileProvider>
+          <HomePageProvider>
+            <CatProfileProvider>
+              <Switch>
                 <Route exact path='/' component={HomePage} />
-                <Route path='/breeds/:id' exact component={CatProfilePage} />
-                <Route path='/top' exact component={TopVisitsPage} />
-                <Route path='/404' component={NotFoundPage} />
+                <Route exact path='/breeds/:id' component={CatProfilePage} />
+                <Route exact path='/top' component={TopVisitsPage} />
+                <Route exact path='/404' component={NotFoundPage} />
                 <Route component={NotFoundPage} />
-              </CatProfileProvider>
-            </HomePageProvider>
-          </Switch>
+              </Switch>
+            </CatProfileProvider>
+          </HomePageProvider>
         </AppContainer>
       </Router>
     </>
