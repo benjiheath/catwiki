@@ -1,21 +1,25 @@
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 import { useHomePageContext } from '../../contexts/HomePage/HomePageContext';
 import { Spinner } from '../reusable';
 import ResultBlock from './ResultBlock';
 import { GiCat } from 'react-icons/gi';
 import { FaSadTear } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
+import useReactSimpleMatchMedia from 'react-simple-matchmedia';
 
 const Search = () => {
   const { searchLoading, cats, showModal, noResults, inputRef, handleSearch } =
     useHomePageContext();
+
+  const isMobile = useReactSimpleMatchMedia('(max-width: 600px)');
 
   return (
     <SearchContainer>
       <SearchBar
         ref={inputRef}
         type='text'
-        placeholder='Enter your breed'
+        placeholder={isMobile ? 'Search' : 'Enter your breed'}
         onChange={handleSearch}
       />
       <AiOutlineSearch />
@@ -136,3 +140,6 @@ const NoResults = styled.span`
     margin: 0 0.5rem;
   }
 `;
+function useref() {
+  throw new Error('Function not implemented.');
+}
