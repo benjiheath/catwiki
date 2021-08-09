@@ -1,6 +1,6 @@
 <div align="center">
 
-Fullstack solution for a challenge from <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>
+Fullstack solution for a challenge from <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
 
 </div>
 
@@ -18,11 +18,12 @@ Fullstack solution for a challenge from <a href="http://devchallenges.io" target
 
 ## Cat wiki
 
-Here I gain a strong introduction to Typescript and the world of back-end development.
+Here I gain a strong introduction to Typescript and the world of back-end development with the PERN stack.
 
 #### Main technologies used:
 
 - Express.js
+- Node.js
 - Typescript
 - PostgreSQL
 - React
@@ -51,16 +52,7 @@ Here I gain a strong introduction to Typescript and the world of back-end develo
 
 ## Screenshots
 
-![screenshot](https://i.giphy.com/media/QYiZWOYJAjF0RzsEhs/giphy.webp)
-<br>
-<br><br><br>
-
-![screenshot](https://i.gyazo.com/26d5d03452c9db5ee07cb56e3ee601a5.gif)
-<br>
-<br><br><br>
-
-![screenshot](https://i.gyazo.com/105c1cd28f14331a0f8909b65a81678e.gif)
-<br>
-<br><br><br>
-
-![screenshot](https://i.gyazo.com/30edd70de0d008af2a2826f495f62718.gif)
+<img src='./client/src/img/cap1.webp?raw=true'>
+<img src='./client/src/img/cap2.gif?raw=true'>
+<img src='./client/src/img/cap3.gif?raw=true'>
+<img src='./client/src/img/cap4.gif?raw=true'>
