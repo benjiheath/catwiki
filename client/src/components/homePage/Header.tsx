@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Search from "./Search";
-import { HeroImgL, HeroImgM, HeroImgS } from "../../img";
-import { ReactComponent as logo } from "../../img/CatwikiLogo.svg";
+import styled from 'styled-components';
+import Search from './Search';
+import { HeroImgL, HeroImgM, HeroImgS } from '../../img';
+import { ReactComponent as logo } from '../../img/CatwikiLogo.svg';
 
 const Header = () => {
   return (
@@ -18,7 +18,11 @@ export default Header; /*
 
 
 
-*/ // Styling
+
+
+
+
+Styling */
 
 const Container = styled.header`
   width: 100%;
@@ -36,11 +40,6 @@ const Container = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  // if dpi <= 192 or abs pixel width <= 1300px, then load medium img
-  /* @media (max-resolution: 192dpi) and (max-width: 600px), (min-width: 1300px) {
-    background-image: url() (${HeroImgS});
-  } */
 
   @media (max-width: 1300px) {
     background-image: url(${HeroImgM});

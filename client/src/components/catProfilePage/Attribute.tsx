@@ -101,7 +101,7 @@ const Value = styled.div`
 
 const Bar = styled.div<{ isBrown: any }>`
   width: 6rem;
-  height: 1rem;
+  height: 1.1rem;
   border-radius: 8px;
   margin-left: 1rem;
   /* background-color: ${({ isBrown }) => (isBrown ? isBrown : '#E0E0E0')}; */
