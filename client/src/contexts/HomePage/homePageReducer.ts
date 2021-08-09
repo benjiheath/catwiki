@@ -1,5 +1,5 @@
 interface InitState {
-  cats: object[];
+  cats: [{ name: ''; id: '' }];
   loading: boolean;
   searchLoading: boolean;
   showModal: boolean;
@@ -7,7 +7,7 @@ interface InitState {
   topVisits: any;
 }
 
-type ACTIONTYPE =
+export type ACTIONTYPE =
   | { type: 'SET_CAT_DATA'; payload: object[] }
   | {
       type: 'SET_LOADING' | 'SET_SEARCH_LOADING' | 'SET_MODAL' | 'SET_NO_RESULTS';

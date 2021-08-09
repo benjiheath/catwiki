@@ -4,8 +4,6 @@ import { LooseObject } from '../../../types';
 export const getTopVisitsFromAPI = async ({ setLoading, setTopVisits }: LooseObject) => {
   setLoading(true);
 
-  console.log(process.env.REACT_APP_ENV);
-
   const url =
     process.env.REACT_APP_ENV === 'dev'
       ? 'http://localhost:3001'

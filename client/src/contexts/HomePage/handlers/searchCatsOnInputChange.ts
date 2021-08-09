@@ -29,6 +29,7 @@ export const searchCatsOnInputChange = (
       }
       const data = res.data.data;
       successfulSearch(data);
+      console.log('SEARCH CAT DATA:', data);
     } catch (err) {
       console.log(err);
     }

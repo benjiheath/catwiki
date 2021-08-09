@@ -1,6 +1,6 @@
-import Header from "./Header";
-import Breeds from "./Breeds";
-import Info from "./Info";
-import Footer from "../reusable/Footer";
+import Header from './Header';
+import TopVisitedBreeds from './TopVisitedBreeds';
+import Info from './Info';
+import Footer from '../reusable/Footer';
 
-export { Header, Breeds, Info, Footer };
+export { Header, TopVisitedBreeds, Info, Footer };

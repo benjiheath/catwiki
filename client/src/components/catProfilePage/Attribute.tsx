@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { LooseObject } from '../../types';
 
 interface props {
-  attr: any;
+  attr: LooseObject;
 }
 
 const Attribute = ({ attr }: props) => {
@@ -30,21 +31,21 @@ const Attribute = ({ attr }: props) => {
       // }
       switch (difference) {
         case 0:
-          return "linear-gradient(to right, #5c4c44, #1f1b18)";
+          return 'linear-gradient(to right, #5c4c44, #1f1b18)';
         case 1:
-          return "linear-gradient(to right, #867266, #5c4c44)";
+          return 'linear-gradient(to right, #867266, #5c4c44)';
         case 2:
-          return "linear-gradient(to right, #ac9282, #867266)";
+          return 'linear-gradient(to right, #ac9282, #867266)';
         case 3:
-          return "linear-gradient(to right, #d3b6a4, #ac9282)";
+          return 'linear-gradient(to right, #d3b6a4, #ac9282)';
         case 4:
-          return "linear-gradient(to right, #ffe6d6, #d3b6a4)";
+          return 'linear-gradient(to right, #ffe6d6, #d3b6a4)';
         case 5:
-          return "#c0a797";
+          return '#c0a797';
         default:
-          return "#E0E0E0";
+          return '#E0E0E0';
       }
-    }
+    } else return null;
   });
 
   return (
@@ -103,6 +104,6 @@ const Bar = styled.div<{ isBrown: any }>`
   height: 1rem;
   border-radius: 8px;
   margin-left: 1rem;
-  /* background-color: ${({ isBrown }) => (isBrown ? isBrown : "#E0E0E0")}; */
-  background: ${({ isBrown }) => (isBrown ? isBrown : "#E0E0E0")};
+  /* background-color: ${({ isBrown }) => (isBrown ? isBrown : '#E0E0E0')}; */
+  background: ${({ isBrown }) => (isBrown ? isBrown : '#E0E0E0')};
 `;

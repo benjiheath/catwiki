@@ -33,7 +33,8 @@ const useHomePageReducer = () => {
     noResultsHandler: () => {
       dispatch({ type: 'NO_RESULTS' });
     },
-    successfulSearch: (value: boolean) => {
+    successfulSearch: (value: object[]) => {
+      console.log('VAAAAAAAAAAAAAAAAAAAAAAAAAAl', value);
       dispatch({ type: 'SUCCESS', payload: value });
     },
   };

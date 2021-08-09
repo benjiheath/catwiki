@@ -1,18 +1,18 @@
 import { useReducer } from 'react';
 import { initState, catProfileReducer } from './reducer';
-import { LooseObject } from '../../types';
+import { LooseObject, ParsedCat } from '../../types';
 
 const useCatProfileReducer = () => {
   const [state, dispatch] = useReducer(catProfileReducer, initState);
 
   const dispatchers = {
-    setData: (value: any) => {
+    setData: (value: ParsedCat) => {
       dispatch({
         type: 'SET_CAT_DATA',
         payload: value,
       });
     },
-    setLoading: (value: any) => {
+    setLoading: (value: boolean) => {
       dispatch({ type: 'SET_LOADING', payload: value });
     },
   };

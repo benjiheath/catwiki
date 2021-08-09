@@ -1,34 +1,26 @@
-import styled from "styled-components";
-import { SectionContainer } from "../styledComponents";
-import { Button, CatImgHoverVisits } from "../reusable";
-import { useHomePageContext } from "../../contexts/HomePage/HomePageContext";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { SectionContainer } from '../styledComponents';
+import { Button } from '../reusable';
+import { useHomePageContext } from '../../contexts/HomePage/HomePageContext';
+import { Link } from 'react-router-dom';
+import BreedCard from './BreedCard';
 
-const Breeds = () => {
+const TopVisitedBreeds = () => {
   const { topVisits, loading } = useHomePageContext();
-  console.log(topVisits);
 
   return (
     <Container>
       <MostSearched>Most Searched Breeds</MostSearched>
       <HeadingContainer>
         <Heading>66+ Breeds for you to discover</Heading>
-        <Link to="/top">
-          <Button text="See more" m="0 0 1.5rem" />
+        <Link to='/top'>
+          <Button text='See more' m='0 0 1.5rem' />
         </Link>
       </HeadingContainer>
       {!loading && topVisits && (
         <ImgContainer>
-          {topVisits.slice(0, 4).map((breed: any) => {
-            console.log(topVisits);
-            return (
-              <Wrapper>
-                <Link to={`/breeds/${breed.id}`}>
-                  <CatImgHoverVisits visits={breed.visits} hw="21.5rem" img={breed.img} />
-                </Link>
-                <BreedName>{breed.name}</BreedName>
-              </Wrapper>
-            );
+          {topVisits.slice(0, 4).map((breed: any, idx: number) => {
+            return <BreedCard breed={breed} key={idx} />;
           })}
         </ImgContainer>
       )}
@@ -36,7 +28,7 @@ const Breeds = () => {
   );
 };
 
-export default Breeds; /*
+export default TopVisitedBreeds; /*
 
 
 
@@ -66,7 +58,7 @@ const MostSearched = styled.h3`
   margin-bottom: 2.5rem;
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     background-color: var(--line-brown);
     border-radius: 200px;
@@ -124,34 +116,5 @@ const ImgContainer = styled.div`
 
   @media (max-width: 600px) {
     grid-row-gap: 3vw;
-  }
-`;
-
-const Wrapper = styled.div`
-  @media (max-width: 900px) {
-    text-align: center;
-  }
-
-  @media (max-width: 600px) {
-    &:nth-of-type(1) {
-      justify-self: start;
-    }
-    &:nth-of-type(2) {
-      justify-self: end;
-    }
-    &:nth-of-type(3) {
-      justify-self: start;
-    }
-    &:nth-of-type(4) {
-      justify-self: end;
-    }
-  }
-`;
-
-const BreedName = styled.h4`
-  font-size: 1.8rem;
-  margin-top: 1rem;
-  @media (max-width: 600px) {
-    font-size: 2rem;
   }
 `;

@@ -8,7 +8,7 @@ import Attribute, { Key } from './Attribute';
 const Content = () => {
   const { loading, data, getBreedDataHandler } = useCatProfileContext();
 
-  const { id } = useParams<any>();
+  const { id } = useParams<{ id: string }>();
 
   const updateDbVisits = async () => {
     const url =

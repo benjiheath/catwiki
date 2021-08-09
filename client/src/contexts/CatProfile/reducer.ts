@@ -1,5 +1,7 @@
+import { ParsedCat } from '../../types';
+
 interface InitState {
-  data: object[] | null;
+  data: ParsedCat | null;
   loading: boolean;
 }
 

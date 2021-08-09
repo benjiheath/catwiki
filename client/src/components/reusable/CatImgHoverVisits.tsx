@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Props {
-  visits: number;
+  visits?: number;
   hw: string;
   img: string;
 }
@@ -10,7 +10,7 @@ const CatImgHoverVisits = ({ visits, hw, img }: Props) => {
   return (
     <ImgWrapper hw={hw}>
       <Visits>
-        {visits} {visits > 1 ? "visits" : "visit"}
+        {visits} {visits && visits > 1 ? 'visits' : 'visit'}
       </Visits>
       <Img src={img} hw={hw} />
     </ImgWrapper>
@@ -30,7 +30,7 @@ const ImgWrapper = styled.div<{ hw: any }>`
   max-width: ${({ hw }) => hw};
   overflow: hidden;
   border-radius: 24px;
-  margin-right: ${({ hw }) => (hw === "22rem" ? "5rem" : "0")};
+  margin-right: ${({ hw }) => (hw === '22rem' ? '5rem' : '0')};
   position: relative;
 
   &:hover {
@@ -50,32 +50,32 @@ const ImgWrapper = styled.div<{ hw: any }>`
     max-width: 17vw;
     height: 17vw; */
 
-    min-width: ${({ hw }) => hw !== "22rem" && "17vw"};
-    max-width: ${({ hw }) => hw !== "22rem" && "17vw"};
-    height: ${({ hw }) => hw !== "22rem" && "17vw"};
+    min-width: ${({ hw }) => hw !== '22rem' && '17vw'};
+    max-width: ${({ hw }) => hw !== '22rem' && '17vw'};
+    height: ${({ hw }) => hw !== '22rem' && '17vw'};
   }
 
   @media (max-width: 750px) {
-    min-width: ${({ hw }) => hw !== "22rem" && "unset"};
-    max-width: ${({ hw }) => hw !== "22rem" && "unset"};
-    height: ${({ hw }) => hw !== "22rem" && "30vw"};
-    width: ${({ hw }) => hw !== "22rem" && "30vw"};
+    min-width: ${({ hw }) => hw !== '22rem' && 'unset'};
+    max-width: ${({ hw }) => hw !== '22rem' && 'unset'};
+    height: ${({ hw }) => hw !== '22rem' && '30vw'};
+    width: ${({ hw }) => hw !== '22rem' && '30vw'};
 
-    min-width: ${({ hw }) => hw === "22rem" && "unset"};
-    max-width: ${({ hw }) => hw === "22rem" && "unset"};
-    height: ${({ hw }) => hw === "22rem" && "230px"};
-    width: ${({ hw }) => hw === "22rem" && "230px"};
-    margin-bottom: ${({ hw }) => hw === "22rem" && "2rem"};
+    min-width: ${({ hw }) => hw === '22rem' && 'unset'};
+    max-width: ${({ hw }) => hw === '22rem' && 'unset'};
+    height: ${({ hw }) => hw === '22rem' && '230px'};
+    width: ${({ hw }) => hw === '22rem' && '230px'};
+    margin-bottom: ${({ hw }) => hw === '22rem' && '2rem'};
 
-    /* min-width: ${({ hw }) => hw === "22rem" && "25vw"};
-    max-width: ${({ hw }) => hw === "22rem" && "25vw"};
-    height: ${({ hw }) => hw === "22rem" && "25vw"}; */
+    /* min-width: ${({ hw }) => hw === '22rem' && '25vw'};
+    max-width: ${({ hw }) => hw === '22rem' && '25vw'};
+    height: ${({ hw }) => hw === '22rem' && '25vw'}; */
   }
 
   @media (max-width: 600px) {
     border-radius: 12px;
-    height: ${({ hw }) => hw !== "22rem" && "38vw"};
-    width: ${({ hw }) => hw !== "22rem" && "38vw"};
+    height: ${({ hw }) => hw !== '22rem' && '38vw'};
+    width: ${({ hw }) => hw !== '22rem' && '38vw'};
   }
 `;
 
