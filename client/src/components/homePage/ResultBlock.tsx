@@ -1,17 +1,12 @@
-import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface prop {
   cat: { name: string; id: any };
 }
 
 const ResultBlock = ({ cat }: prop) => {
-  return (
-    <Result to={`/breeds/${cat.id}`} onClick={() => console.log(cat.id)}>
-      {cat.name}
-    </Result>
-  );
+  return <Result to={`/breeds/${cat.id}`}>{cat.name}</Result>;
 };
 
 export default ResultBlock;

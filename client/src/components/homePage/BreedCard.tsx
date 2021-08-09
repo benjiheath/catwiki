@@ -8,7 +8,6 @@ interface Props {
 }
 
 const BreedCard = ({ breed }: Props) => {
-  console.log(breed);
   return (
     <Wrapper>
       <Link to={`/breeds/${breed.id}`}>

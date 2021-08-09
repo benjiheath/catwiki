@@ -7,8 +7,6 @@ export const getVisits = async ({ req, res, next }: ExpressAsync) => {
   try {
     // get breeds (rows) from db sorted by visits
 
-    console.log(pool);
-
     const { rows: breeds } = await pool.query('SELECT * FROM breeds ORDER BY visits DESC LIMIT 10');
 
     const getCat = async (breed: string): Promise<Cat[]> => {

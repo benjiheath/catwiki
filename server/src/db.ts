@@ -2,8 +2,6 @@ const Pool = require('pg').Pool;
 
 const e = process.env;
 
-console.log('ne:', e.NODE_ENV);
-
 export const pool = new Pool({
   user: e.NODE_ENV === 'dev' ? e.DEV_USER : e.DB_USER,
   password: e.NODE_ENV === 'dev' ? e.DEV_PASSWORD : e.DB_PASSWORD,
