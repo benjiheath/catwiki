@@ -15,8 +15,8 @@ export const selectBreed = async (req: Request, res: Response, next: NextFunctio
     // format necessary data for iteration;
     const dataOfInterest = formatCatDataForClient(data);
 
-    res.status(200).json({ ...dataOfInterest });
+    res.status(200).send({ ...dataOfInterest });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 };

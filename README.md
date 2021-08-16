@@ -18,7 +18,7 @@ Fullstack solution for a challenge from <a href="http://devchallenges.io" target
 
 ## Cat wiki
 
-Here I gain a strong introduction to Typescript and the world of back-end development with the PERN stack.
+Here I gain a strong introduction to Typescript and the world of back-end development.
 
 #### Main technologies used:
 
@@ -34,9 +34,9 @@ Here I gain a strong introduction to Typescript and the world of back-end develo
 
 - setting up a dev environment with TypeScript
 
-- improving type-safety with interfaces and also utility types such as Pick
+- improving type-safety with interfaces and also utility types such as Pick<>
 
-- common Express workflows, middlewares, routing & controllers etc
+- common Express workflows, middlewares, routing, controllers & error handling etc
 
 - adhering to RESTful API architecture style & methodologies
 
@@ -44,7 +44,6 @@ Here I gain a strong introduction to Typescript and the world of back-end develo
 
 - Deploying an API via Heroku
   - I opted for seperate deployment of front & back
-  - Client-side deployed with Netlify
 - Throttling/debouncing for search autocomplete
 - useCallback() to pass down some utility functions via Context API
 

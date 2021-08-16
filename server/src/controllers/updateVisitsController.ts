@@ -16,6 +16,6 @@ export const updateVisits = async (req: Request, res: Response, next: NextFuncti
 
     res.status(200).json({ status: `Successfully submitted visit for: '${id}'` });
   } catch (err) {
-    res.status(200).json({ status: err, errmsg: err.msg });
+    next(err);
   }
 };

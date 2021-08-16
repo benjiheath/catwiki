@@ -27,9 +27,9 @@ export const getVisits = async ({ req, res, next }: ExpressAsync) => {
       })
     )) as ParsedCat[];
 
-    res.status(200).json({ status: 'Successfully retrieved visits', data: dataOfInterest });
+    res.status(200).send({ status: 'Successfully retrieved visits', data: dataOfInterest });
   } catch (err) {
-    res.status(200).json({ status: err, errmsg: err.msg });
+    next(err);
   }
 };
 

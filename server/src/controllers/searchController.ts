@@ -17,8 +17,8 @@ export const filterBreeds = async (
       res.status(200).json({ status: 'no results', message: 'Request returned no results' });
       return;
     }
-    res.status(200).json({ status: 'ok', results: data.length, data });
+    res.status(200).send({ status: 'ok', results: data.length, data });
   } catch (err) {
-    console.error(err);
+    next(err);
   }
 };

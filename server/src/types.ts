@@ -6,6 +6,15 @@ export interface ExpressAsync {
   next: NextFunction;
 }
 
+export interface ErrorException extends Error {
+  status: string;
+  statusCode: number;
+}
+
+export interface ExpressAsyncErr extends ExpressAsync {
+  err: ErrorException;
+}
+
 export interface Breed {
   id: number;
   breed: string;
