@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { filterRouter, selectRouter, visitsRouter } from './routes';
 import { NextFunction, Request, Response } from 'express';
-import { ExpressAsync, ExpressAsyncErr, ErrorException } from './types';
+import { ErrorException } from './types';
 
 const app = express();
 

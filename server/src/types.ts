@@ -11,10 +11,6 @@ export interface ErrorException extends Error {
   statusCode: number;
 }
 
-export interface ExpressAsyncErr extends ExpressAsync {
-  err: ErrorException;
-}
-
 export interface Breed {
   id: number;
   breed: string;
