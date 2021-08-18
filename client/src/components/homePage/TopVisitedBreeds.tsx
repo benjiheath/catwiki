@@ -4,6 +4,7 @@ import { Button } from '../reusable';
 import { useHomePageContext } from '../../contexts/HomePage/HomePageContext';
 import { Link } from 'react-router-dom';
 import BreedCard from './BreedCard';
+import { ParsedCat } from '../../types';
 
 const TopVisitedBreeds = () => {
   const { topVisits, loading } = useHomePageContext();
@@ -19,7 +20,7 @@ const TopVisitedBreeds = () => {
       </HeadingContainer>
       {!loading && topVisits && (
         <ImgContainer>
-          {topVisits.slice(0, 4).map((breed: any, idx: number) => {
+          {topVisits.slice(0, 4).map((breed: ParsedCat, idx: number) => {
             return <BreedCard breed={breed} key={idx} />;
           })}
         </ImgContainer>

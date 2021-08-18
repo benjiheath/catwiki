@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { pool } from '../db';
 import { formatCatDataForClient } from './formatHandlers/formatCatDataForClient';
-import { ParsedCat, Cat, ExpressAsync } from '../types';
+import { ParsedCat, Cat, ExpressAsync, BreedFromDB } from '../types';
 
 export const getVisits = async ({ req, res, next }: ExpressAsync) => {
   try {
@@ -21,7 +21,7 @@ export const getVisits = async ({ req, res, next }: ExpressAsync) => {
 
     // query API for each breed ID & format this data to deliver to client
     const dataOfInterest = (await Promise.all(
-      breeds.map(async (breed: any) => {
+      breeds.map(async (breed: BreedFromDB) => {
         const cat = await getCat(breed.breed);
         return formatCatDataForClient(cat, breed.visits);
       })
@@ -32,40 +32,3 @@ export const getVisits = async ({ req, res, next }: ExpressAsync) => {
     next(err);
   }
 };
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-// For each breed, get all of the breed's data
-// const dataOfInterest = await Promise.all(
-//   breeds.map(async (breed: any) => {
-//     const { data } = await axios.get(process.env.API_URL_SELECT, {
-//       headers: { "x-api-key": process.env.API_KEY },
-//       params: {
-//         breed_id: breed.breed,
-//         limit: 1,
-//       },
-//     });
-
-//     console.log("data:", data);
-//     // format necessary data for iteration; also inject # of visits
-//     const formattedData = formatCatDataForClient(data, br.visits);
-
-//     return formattedData;
-//   })
-// );

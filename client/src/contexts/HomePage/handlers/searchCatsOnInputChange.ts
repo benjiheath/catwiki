@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { MutableRefObject } from 'react';
 import { LooseObject, Timeout } from '../../../types';
 
 // using debouncing
 export const searchCatsOnInputChange = (
   { initSearch, inputIsEmpty, noResultsHandler, successfulSearch }: LooseObject,
   timeout: Timeout,
-  inputRef: any
+  inputRef: MutableRefObject<HTMLInputElement>
 ) => {
   initSearch();
   clearTimeout(timeout.current as NodeJS.Timeout);

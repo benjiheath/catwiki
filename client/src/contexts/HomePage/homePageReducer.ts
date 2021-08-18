@@ -1,27 +1,30 @@
+import { NameAndId, ParsedCat } from '../../types';
+
 interface InitState {
-  cats: [{ name: ''; id: '' }];
+  cats: NameAndId[] | null;
   loading: boolean;
   searchLoading: boolean;
   showModal: boolean;
   noResults: boolean;
-  topVisits: any;
+  topVisits: null | ParsedCat[];
 }
 
 export type ACTIONTYPE =
-  | { type: 'SET_CAT_DATA'; payload: object[] }
+  | { type: 'SET_CAT_DATA'; payload: NameAndId[] }
   | {
       type: 'SET_LOADING' | 'SET_SEARCH_LOADING' | 'SET_MODAL' | 'SET_NO_RESULTS';
       payload: boolean;
     }
-  | { type: 'SET_TOP_VISITS'; payload: any }
+  | { type: 'SET_TOP_VISITS'; payload: ParsedCat[] }
   | {
       type: 'INIT_SEARCH' | 'INPUT_EMPTY' | 'NO_RESULTS';
       payload?: undefined;
     }
-  | { type: 'SUCCESS'; payload: any };
+  | { type: 'SUCCESS'; payload: NameAndId[] };
 
 export const initState: InitState = {
-  cats: [{ name: '', id: '' }],
+  // cats: [{ name: '', id: '' }],
+  cats: null,
   loading: false,
   searchLoading: false,
   showModal: false,

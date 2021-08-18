@@ -1,5 +1,5 @@
 import pick from 'lodash/pick';
-import { ParsedCat, Cat } from '../../types';
+import { ParsedCat, Cat, Attributes } from '../../types';
 
 export const formatCatDataForClient = (data: Cat[], visits?: number): ParsedCat => {
   const breedInfo = data[0].breeds[0];
@@ -23,7 +23,7 @@ export const formatCatDataForClient = (data: Cat[], visits?: number): ParsedCat 
     'life_span'
   );
   const img = data[0].url;
-  const attributesRaw: any = pick(
+  const attributesRaw: Attributes = pick(
     breedInfo,
     'adaptability',
     'affection_level',
@@ -40,6 +40,8 @@ export const formatCatDataForClient = (data: Cat[], visits?: number): ParsedCat 
     const formattedKey = key.replace('_', ' ');
     return { [formattedKey]: attributesRaw[key] };
   });
+
+  console.log('test:', attributes);
 
   const dataOfInterest = { ...overview, attributes, img, images, visits };
 

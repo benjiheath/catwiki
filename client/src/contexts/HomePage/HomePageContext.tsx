@@ -1,10 +1,9 @@
 import { createContext, useContext, useRef, useEffect, useCallback } from 'react';
 import useHomePageReducer from './useHomePageReducer';
-import { Timeout } from '../../types';
+import { HomeContext, Timeout, useHomeCtx, ProviderProps } from '../../types';
 import { searchCatsOnInputChange, getTopVisitsFromAPI } from './handlers';
-import { ProviderProps } from '../../types';
 
-export const HomePageContext = createContext<Object | null>(null);
+export const HomePageContext = createContext<HomeContext | null>(null);
 
 const HomePageProvider = (props: ProviderProps) => {
   const [state, dispatchers] = useHomePageReducer();
@@ -25,21 +24,21 @@ const HomePageProvider = (props: ProviderProps) => {
 
   return (
     <HomePageContext.Provider
-      value={{
-        ...state,
-        ...dispatchers,
-        searchCatsOnInputChange,
-        getTopVisitsFromAPI,
-        inputRef,
-        handleSearch,
-      }}
+      value={
+        {
+          ...state,
+          ...dispatchers,
+          inputRef,
+          handleSearch,
+        } as HomeContext
+      }
     >
       {props.children}
     </HomePageContext.Provider>
   );
 };
 
-export const useHomePageContext: any = () => useContext(HomePageContext);
+export const useHomePageContext: useHomeCtx = () => useContext(HomePageContext) as HomeContext;
 
 export default HomePageProvider; /* 
 

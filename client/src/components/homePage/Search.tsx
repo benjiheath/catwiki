@@ -8,6 +8,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { GiCat } from 'react-icons/gi';
 import { FaSadTear } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
+import { NameAndId } from '../../types';
 
 const Search = () => {
   const { searchLoading, cats, showModal, noResults, inputRef, handleSearch } =
@@ -19,11 +20,6 @@ const Search = () => {
   const openMobileModal = () => {
     isMobile && setMobileModal(true);
   };
-
-  interface NameAndId {
-    name: string;
-    id: string;
-  }
 
   return (
     <SearchContainer mob={mobileModal}>
@@ -43,7 +39,7 @@ const Search = () => {
       <AiOutlineSearch />
 
       {searchLoading && <Spinner type='modal' isMob={mobileModal} />}
-      {showModal && (
+      {showModal && cats && (
         <ResultsModal mob={mobileModal}>
           <ResultsContainer mob={mobileModal}>
             {noResults ? (

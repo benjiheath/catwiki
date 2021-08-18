@@ -7,9 +7,8 @@ const TopBreedsList = () => {
 
   return (
     <>
-      {topVisits.map((breed: ParsedCat, idx: number) => (
-        <TopBreed breed={breed} idx={idx} />
-      ))}
+      {topVisits &&
+        topVisits.map((breed: ParsedCat, idx: number) => <TopBreed breed={breed} idx={idx} />)}
     </>
   );
 };

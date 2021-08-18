@@ -24,7 +24,7 @@ export default CatImgHoverVisits; /*
 
 */ // Styling
 
-const ImgWrapper = styled.div<{ hw: any }>`
+const ImgWrapper = styled.div<{ hw: string }>`
   height: ${({ hw }) => hw};
   min-width: ${({ hw }) => hw};
   max-width: ${({ hw }) => hw};
@@ -92,7 +92,7 @@ const Visits = styled.span`
   font-weight: 500;
 `;
 
-const Img = styled.img<{ hw: any }>`
+const Img = styled.img<{ hw: string }>`
   width: 100%;
   height: 100%;
   object-fit: cover;

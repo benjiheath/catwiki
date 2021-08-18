@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LooseObject } from '../../../types';
 
-export const getBreedData = async (id: number, { setData, setLoading }: LooseObject) => {
+export const getBreedData = async (id: string, { setData, setLoading }: LooseObject) => {
   try {
     setLoading(true);
 

@@ -11,6 +11,12 @@ export interface ErrorException extends Error {
   statusCode: number;
 }
 
+export interface BreedFromDB {
+  id: number;
+  breed: string;
+  visits: number;
+}
+
 // API DATA
 
 export interface Breed {

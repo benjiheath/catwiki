@@ -1,12 +1,12 @@
 import { useReducer } from 'react';
 import { initState, homePageReducer } from './homePageReducer';
-import { LooseObject } from '../../types';
+import { LooseObject, NameAndId, ParsedCat } from '../../types';
 
 const useHomePageReducer = () => {
   const [state, dispatch] = useReducer(homePageReducer, initState);
 
   const dispatchers = {
-    setCats: (value: any) => {
+    setCats: (value: NameAndId[]) => {
       dispatch({ type: 'SET_CAT_DATA', payload: value });
     },
     setLoading: (value: boolean) => {
@@ -21,7 +21,7 @@ const useHomePageReducer = () => {
     setNoResults: (value: boolean) => {
       dispatch({ type: 'SET_NO_RESULTS', payload: value });
     },
-    setTopVisits: (value: any) => {
+    setTopVisits: (value: ParsedCat[]) => {
       dispatch({ type: 'SET_TOP_VISITS', payload: value });
     },
     initSearch: () => {
@@ -33,7 +33,7 @@ const useHomePageReducer = () => {
     noResultsHandler: () => {
       dispatch({ type: 'NO_RESULTS' });
     },
-    successfulSearch: (value: object[]) => {
+    successfulSearch: (value: NameAndId[]) => {
       dispatch({ type: 'SUCCESS', payload: value });
     },
   };
