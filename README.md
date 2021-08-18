@@ -34,7 +34,7 @@ Here I gain a strong introduction to Typescript and the world of back-end develo
 
 - setting up a dev environment with TypeScript
 
-- improving type-safety with interfaces and also utility types such as Pick<>
+- improving type-safety with interfaces and also utility types such as Required<> and Pick<>
 
 - common Express workflows, middlewares, routing, controllers & error handling etc
 

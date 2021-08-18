@@ -1,5 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
+import pick from 'lodash/pick';
 import axios from 'axios';
+import { Breed } from '../types';
+
+interface NameAndId {
+  name: string;
+  id: string;
+}
 
 export const filterBreeds = async (
   req: Request,
@@ -17,7 +24,11 @@ export const filterBreeds = async (
       res.status(200).send({ status: 'no results', message: 'Request returned no results' });
       return;
     }
-    res.status(200).send({ status: 'ok', results: data.length, data });
+
+    // isolate name & id only
+    const formattedData = data.map((cat: Required<NameAndId>) => pick(cat, 'name', 'id'));
+
+    res.status(200).send({ status: 'ok', results: data.length, data: formattedData });
   } catch (err) {
     next(err);
   }

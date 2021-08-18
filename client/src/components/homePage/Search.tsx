@@ -20,7 +20,10 @@ const Search = () => {
     isMobile && setMobileModal(true);
   };
 
-  console.log('CATS:', cats);
+  interface NameAndId {
+    name: string;
+    id: string;
+  }
 
   return (
     <SearchContainer mob={mobileModal}>
@@ -48,7 +51,9 @@ const Search = () => {
                 <GiCat /> No kitties found <FaSadTear />
               </NoResults>
             ) : (
-              cats.map((cat: any) => <ResultBlock cat={cat} key={cat.id} mob={mobileModal} />)
+              cats.map((cat: Required<NameAndId>) => (
+                <ResultBlock cat={cat} key={cat.id} mob={mobileModal} />
+              ))
             )}
           </ResultsContainer>
         </ResultsModal>
