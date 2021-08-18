@@ -44,6 +44,7 @@ Here I gain a strong introduction to Typescript and the world of back-end develo
 
 - Deploying an API via Heroku
   - I opted for seperate deployment of front & back
+- Making an async search dropdown
 - Throttling/debouncing for search autocomplete
 - useCallback() to pass down some utility functions via Context API
 

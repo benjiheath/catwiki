@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import CatImgHoverVisits from '../reusable/CatImgHoverVisits';
+import { ParsedCat } from '../../types';
 
 interface Props {
-  breed: any;
-  idx: any;
+  breed: ParsedCat;
+  idx: number;
 }
 
 const TopBreed = ({ breed, idx }: Props) => {
@@ -17,7 +18,7 @@ const TopBreed = ({ breed, idx }: Props) => {
             {idx + 1}.&nbsp;{breed.name}
           </BreedName>
           <NumVisits>
-            <strong>{breed.visits}</strong> {breed.visits > 1 ? 'visits' : 'visit'}
+            <strong>{breed.visits}</strong> {breed.visits && breed.visits > 1 ? 'visits' : 'visit'}
           </NumVisits>
           <Description>{breed.description}</Description>
         </TextWrapper>
@@ -35,7 +36,6 @@ export default TopBreed; /*
 
 const BreedWrapper = styled.div`
   display: flex;
-  /* margin-bottom: 5rem; */
   padding: 2rem 1rem;
   transition: all 0.5s;
   border-radius: 2rem;

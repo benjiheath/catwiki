@@ -14,7 +14,7 @@ export const filterBreeds = async (
       },
     });
     if (data.length === 0) {
-      res.status(200).json({ status: 'no results', message: 'Request returned no results' });
+      res.status(200).send({ status: 'no results', message: 'Request returned no results' });
       return;
     }
     res.status(200).send({ status: 'ok', results: data.length, data });

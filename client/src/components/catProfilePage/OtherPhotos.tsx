@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Photo from "./Photo";
-import { useCatProfileContext } from "../../contexts/CatProfile/CatProfileContext";
+import styled from 'styled-components';
+import Photo from './Photo';
+import { useCatProfileContext } from '../../contexts/CatProfile/CatProfileContext';
 
 const OtherPhotos = () => {
   const { data, loading } = useCatProfileContext();
@@ -11,7 +11,7 @@ const OtherPhotos = () => {
         <Container>
           <Heading>Other photos</Heading>
           <Gallery>
-            {data.images.map((img: any, i: any) => (
+            {data.images.map((img: string, i: number) => (
               <Photo img={img} key={i} />
             ))}
           </Gallery>

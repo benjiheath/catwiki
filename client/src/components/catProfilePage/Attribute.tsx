@@ -7,28 +7,13 @@ interface props {
 
 const Attribute = ({ attr }: props) => {
   const [attribute] = Object.keys(attr);
-  const [value]: any = Object.values(attr);
+  const [value]: number[] = Object.values(attr);
 
   // Mapping 'bar' elements from this arr to determine bar color.
   const attributeBars = new Array(5).fill(null).map((_, i) => {
     if (i <= value) {
       const difference = 5 - i - 1;
-      // switch (difference) {
-      //   case 0:
-      //     return "#544439";
-      //   case 1:
-      //     return "#725e51";
-      //   case 2:
-      //     return "#816a5b";
-      //   case 3:
-      //     return "#917868";
-      //   case 4:
-      //     return "#a38c7c";
-      //   case 5:
-      //     return "#c0a797";
-      //   default:
-      //     return "#E0E0E0";
-      // }
+
       switch (difference) {
         case 0:
           return 'linear-gradient(to right, #5c4c44, #1f1b18)';
@@ -99,7 +84,7 @@ const Value = styled.div`
   display: flex;
 `;
 
-const Bar = styled.div<{ isBrown: any }>`
+const Bar = styled.div<{ isBrown: string | null }>`
   width: 6rem;
   height: 1.1rem;
   border-radius: 8px;

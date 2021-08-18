@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useCatProfileContext } from '../../contexts/CatProfile/CatProfileContext';
 import Attribute, { Key } from './Attribute';
 import { useHistory } from 'react-router';
+import { LooseObject } from '../../types';
 
 const Content = () => {
   const { loading, data, getBreedDataHandler } = useCatProfileContext();
@@ -57,7 +58,7 @@ const Content = () => {
               <Key>Life Span:</Key>
               <DetailValue>{data.life_span}&nbsp;years</DetailValue>
             </Detail>
-            {data.attributes.map((attr: any, idx: number) => (
+            {data.attributes.map((attr: LooseObject, idx: number) => (
               <Attribute key={idx} attr={attr} />
             ))}
           </CatInfoContainer>

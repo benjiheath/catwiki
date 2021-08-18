@@ -20,6 +20,8 @@ const Search = () => {
     isMobile && setMobileModal(true);
   };
 
+  console.log('CATS:', cats);
+
   return (
     <SearchContainer mob={mobileModal}>
       {mobileModal && (
